@@ -7,7 +7,7 @@
 | Módulo         | Procesador de eventos                                        |
 | Tipo           | Software                                                     |
 | Objetivo       | Procesador de eventos del módulo de procesamiento para el proyecto Backend SGI (ASIO). |
-| Estado         | **100%** El procesador de eventos lee de la cola Kafka todos los datos y los envía al Storage Adapter |
+| Estado         | **100%** |
 | Próximos pasos | Finalizado.                                                  |
 | Documentación  | [Manual de usuario](https://github.com/HerculesCRUE/ib-asio-docs-/blob/master/00-An%C3%A1lisis/Manual%20de%20usuario/Manual%20de%20usuario.md)<br />[Manual de despliegue](https://github.com/HerculesCRUE/ib-asio-composeset/blob/master/README.md)<br />[Documentación técnica](https://github.com/HerculesCRUE/ib-asio-docs-/blob/master/00-Arquitectura/arquitectura_semantica/documento_arquitectura/ASIO_Izertis_Arquitectura.md) |
 
