@@ -2,7 +2,8 @@
 
 | Entregable     | Procesador de eventos                                        |
 | -------------- | ------------------------------------------------------------ |
-| Fecha          | 17/12/2020                                                   |
+| Fecha          | 27/04/2021                                                   |
+| Revisado por   | Paloma Terán Pérez                                           |
 | Proyecto       | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](https://www.crue.org/proyecto/hercules/) |
 | Módulo         | Procesador de eventos                                        |
 | Tipo           | Software                                                     |
@@ -86,7 +87,7 @@ No es necesario especificar la clase de inicio de la aplicación, ya que el fich
 
 Se incluyen los resultados del testing y cobertura en los siguientes enlaces:
 
-- [Testing TDD](http://herc-iz-front-desa.atica.um.es:8070/event-processor/surefire/surefire-report.html)
+- [Testing TDD](https://reports.herculesasioizertis.desa.um.es/event-processor/surefire/surefire-report.html)
 - [Cobertura TDD](https://sonarcloud.io/component_measures?id=HerculesCRUE_ib-event-processor&metric=coverage&view=list)
 - [Testing BDD](docs/testing.md)
 
