@@ -26,6 +26,8 @@ spring:
     packages:
       # take care with security problems // spring.activemq.packages.trusted=<package1>,<package2>,<package3>  
       trust-all: true
+  jms:
+    pub-sub-domain: true
 
 ## Actuator
 management:
