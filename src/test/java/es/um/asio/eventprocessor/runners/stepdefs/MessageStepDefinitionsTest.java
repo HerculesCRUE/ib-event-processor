@@ -8,7 +8,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 import es.um.asio.eventprocessor.config.KafkaAdminConfig;
+import es.um.asio.eventprocessor.service.EmailService;
 import es.um.asio.eventprocessor.service.MessageService;
+import es.um.asio.eventprocessor.service.impl.EmailServiceImpl;
 import es.um.asio.eventprocessor.service.impl.MessageServiceImpl;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -34,6 +36,11 @@ public class MessageStepDefinitionsTest {
 		@Bean
 		public MessageService messageService() {
 			return new MessageServiceImpl();
+		}
+
+		@Bean
+		public EmailService emailService() {
+			return new EmailServiceImpl();
 		}
 	}
 

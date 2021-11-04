@@ -7,6 +7,9 @@ app:
     storage-adapter:
       base-url: http://localhost:9324
       messages-endpoint: ${app.microservices.storage-adapter.base-url}/message
+    email-service:
+      base-url: http://localhost:18787
+      messages-endpoint: ${app.microservices.email-service.base-url}/email/sendType
   activemq:
     queue-name: management-data  
 
