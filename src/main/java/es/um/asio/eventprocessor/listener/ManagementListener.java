@@ -44,7 +44,7 @@ public class ManagementListener {
 			try {
 				this.emailService.email("IMPORT");
 			} catch (Exception e) {
-				this.logger.warn("EVENT_PROCESSOR error BACKEND EMAIL SERVICE");
+				this.logger.warn("EVENT_PROCESSOR error BACKEND EMAIL SERVICE: " + e.getMessage());
 			}
 		} else {
 			this.messageService.process(message);
