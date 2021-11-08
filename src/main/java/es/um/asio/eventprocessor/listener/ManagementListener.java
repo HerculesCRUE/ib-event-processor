@@ -4,12 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
-import org.springframework.context.event.EventListener;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.event.ListenerContainerIdleEvent;
 import org.springframework.stereotype.Component;
 
 import es.um.asio.abstractions.domain.ManagementBusEvent;
+import es.um.asio.abstractions.domain.Operation;
 import es.um.asio.eventprocessor.service.EmailService;
 import es.um.asio.eventprocessor.service.MessageService;
 
@@ -41,17 +40,16 @@ public class ManagementListener {
 			this.logger.debug("Received message: {}", message);
 		}
 
-		this.messageService.process(message);
-	}
-
-	@EventListener(condition = "event.listenerId.startsWith('managementBusKafkaListenerContainerFactory-')")
-	public void eventHandler(final ListenerContainerIdleEvent event) {
-		this.logger.warn("EVENT_PROCESSOR No messages received for {} milliseconds", event.getIdleTime());
-
-		try {
-			this.emailService.email("IMPORT");
-		} catch (Exception e) {
-			this.logger.warn("EVENT_PROCESSOR error BACKEND EMAIL SERVICE");
+		if (message.getOperation().equals(Operation.FINAL)) {
+			try {
+				this.emailService.email("IMPORT");
+			} catch (Exception e) {
+				this.logger.warn("EVENT_PROCESSOR error BACKEND EMAIL SERVICE");
+			}
+		} else {
+			this.messageService.process(message);
 		}
+
 	}
+
 }
