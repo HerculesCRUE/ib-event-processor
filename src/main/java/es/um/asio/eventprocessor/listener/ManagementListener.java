@@ -39,7 +39,7 @@ public class ManagementListener {
 		if (this.logger.isDebugEnabled()) {
 			this.logger.debug("Received message: {}", message);
 		}
-
+		this.logger.info("EVENT_PROCESSOR NEW ITEM OPERATION: " + message.getOperation().toString());
 		if (message.getOperation().equals(Operation.FINAL)) {
 			try {
 				this.emailService.email("IMPORT");
