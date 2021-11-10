@@ -8,8 +8,6 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 import es.um.asio.abstractions.domain.ManagementBusEvent;
-import es.um.asio.abstractions.domain.Operation;
-import es.um.asio.eventprocessor.service.EmailService;
 import es.um.asio.eventprocessor.service.MessageService;
 
 /**
@@ -26,9 +24,6 @@ public class ManagementListener {
 	@Autowired
 	private MessageService messageService;
 
-	@Autowired
-	private EmailService emailService;
-
 	/**
 	 * Method listening input topic name
 	 * 
@@ -39,16 +34,8 @@ public class ManagementListener {
 		if (this.logger.isDebugEnabled()) {
 			this.logger.debug("Received message: {}", message);
 		}
-		this.logger.info("EVENT_PROCESSOR NEW ITEM OPERATION: " + message.getOperation().toString());
-		if (message.getOperation().equals(Operation.FINAL)) {
-			try {
-				this.emailService.email("IMPORT");
-			} catch (Exception e) {
-				this.logger.warn("EVENT_PROCESSOR error BACKEND EMAIL SERVICE: " + e.getMessage());
-			}
-		} else {
-			this.messageService.process(message);
-		}
+
+		this.messageService.process(message);
 
 	}
 
