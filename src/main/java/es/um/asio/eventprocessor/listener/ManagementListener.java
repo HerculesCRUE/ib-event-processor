@@ -16,25 +16,27 @@ import es.um.asio.eventprocessor.service.MessageService;
 @Profile("!unit-test")
 @Component
 public class ManagementListener {
-    /**
-     * Logger
-     */
-    private final Logger logger = LoggerFactory.getLogger(ManagementListener.class);
+	/**
+	 * Logger
+	 */
+	private final Logger logger = LoggerFactory.getLogger(ManagementListener.class);
 
-    @Autowired
-    private MessageService messageService;
+	@Autowired
+	private MessageService messageService;
 
-    /**
-     * Method listening input topic name
-     * 
-     * @param message
-     */
-    @KafkaListener(topics = "#{'${app.kafka.management-topic-name}'.split(',')}", containerFactory = "managementBusKafkaListenerContainerFactory")
-    public void listen(final ManagementBusEvent message) {
-        if (this.logger.isDebugEnabled()) {
-            this.logger.debug("Received message: {}", message);
-        }
+	/**
+	 * Method listening input topic name
+	 * 
+	 * @param message
+	 */
+	@KafkaListener(topics = "#{'${app.kafka.management-topic-name}'.split(',')}", containerFactory = "managementBusKafkaListenerContainerFactory")
+	public void listen(final ManagementBusEvent message) {
+		if (this.logger.isDebugEnabled()) {
+			this.logger.debug("Received message: {}", message);
+		}
 
-        this.messageService.process(message);
-    }
+		this.messageService.process(message);
+
+	}
+
 }
